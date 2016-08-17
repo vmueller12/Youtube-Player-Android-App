@@ -12,8 +12,8 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class YoutubeActivity extends YouTubeBaseActivity
             implements YouTubePlayer.OnInitializedListener
 {
-    private String GOOGLE_API_KEY = "TBA";
-    private String YOUTUBE_VIDEO_ID = "TBA";
+    private String GOOGLE_API_KEY = "AIzaSyBwfPef7dTdkvc-VFus5RVaKxWYs-HBsZg";
+    private String YOUTUBE_VIDEO_ID = "UWVsQVxsl0o";
 
 
     @Override
@@ -40,20 +40,24 @@ public class YoutubeActivity extends YouTubeBaseActivity
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
         Toast.makeText(this, "Initialized Youtube Player successfully", Toast.LENGTH_LONG).show();
         youTubePlayer.setPlayerStateChangeListener(playerStateChangeListener);
-        youTubePlayer.setPlayerStateChangeListener(playbackEventListener);
-        if(!wasRestored){
+        youTubePlayer.setPlaybackEventListener(playbackEventListener);
+
+        if(!wasRestored) {
             youTubePlayer.cueVideo(YOUTUBE_VIDEO_ID);
         }
+
     }
-    private  YouTubePlayer.PlaybackEventListener playbackEventListener = new YouTubePlayer.PlaybackEventListener() {
+
+
+    private YouTubePlayer.PlaybackEventListener playbackEventListener = new YouTubePlayer.PlaybackEventListener() {
         @Override
         public void onPlaying() {
-            Toast.makeText(YoutubeActivity.this, "Good Video is playing", Toast.LENGTH_LONG).show();
+            Toast.makeText(YoutubeActivity.this,"Good, video is playing ok", Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onPaused() {
-            Toast.makeText(YoutubeActivity.this, "Video has Paused", Toast.LENGTH_LONG).show();
+            Toast.makeText(YoutubeActivity.this,"Video has paused", Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -72,7 +76,7 @@ public class YoutubeActivity extends YouTubeBaseActivity
         }
     };
 
-    private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
+    YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
         @Override
         public void onLoading() {
 
@@ -85,12 +89,12 @@ public class YoutubeActivity extends YouTubeBaseActivity
 
         @Override
         public void onAdStarted() {
-            Toast.makeText(YoutubeActivity.this, "Click now and make me rich", Toast.LENGTH_LONG).show();
+            Toast.makeText(YoutubeActivity.this,"Click Ad now, make the video creator rich!", Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onVideoStarted() {
-            Toast.makeText(YoutubeActivity.this, "Video has started", Toast.LENGTH_LONG).show();
+            Toast.makeText(YoutubeActivity.this,"Video has started!", Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -106,7 +110,7 @@ public class YoutubeActivity extends YouTubeBaseActivity
 
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-        Toast.makeText(this, "Failed to initialize Youtube Player successfully", Toast.LENGTH_LONG).show();
-
+        Toast.makeText(this, "Failed to Initialize Youtube Player", Toast.LENGTH_LONG).show();
     }
 }
+
